@@ -59,8 +59,8 @@ ShieldApp is a comprehensive Android security suite that provides enterprise-gra
 
 ```bash
 # Clone
-git clone https://github.com/beenuar/apps-android.git
-cd apps-android
+git clone https://github.com/beenuar/shieldapp-android.git
+cd shieldapp-android
 
 # Add your Firebase config
 # Place your google-services.json in app/
@@ -80,7 +80,7 @@ cd apps-android
 
 ## Download
 
-Download the latest APK from [Releases](https://github.com/beenuar/apps-android/releases).
+Download the latest APK from [Releases](https://github.com/beenuar/shieldapp-android/releases).
 
 ## Privacy
 
