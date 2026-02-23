@@ -1,10 +1,10 @@
-# Cyble — All-in-One Android Security Suite
+# ShieldApp — All-in-One Android Security Suite
 
 <p align="center">
-  <img src="docs/icon.png" width="120" alt="Cyble Logo"/>
+  <img src="docs/icon.png" width="120" alt="ShieldApp Logo"/>
 </p>
 
-Cyble is a comprehensive Android security suite that provides enterprise-grade protection in a consumer-friendly package. Everything runs on-device — no cloud dependency, no API keys required, no data collection.
+ShieldApp is a comprehensive Android security suite that provides enterprise-grade protection in a consumer-friendly package. Everything runs on-device — no cloud dependency, no API keys required, no data collection.
 
 ## Features
 

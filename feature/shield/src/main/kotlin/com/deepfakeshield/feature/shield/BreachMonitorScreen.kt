@@ -442,7 +442,7 @@ private fun fmtCount(n: Long) = when { n >= 1_000_000_000 -> "${"%.1f".format(n 
 private fun fetchBreaches(): List<Breach> {
     return try {
         val conn = URL("https://haveibeenpwned.com/api/v3/breaches").openConnection() as HttpURLConnection
-        conn.setRequestProperty("User-Agent", "Cyble-BreachMonitor"); conn.connectTimeout = 15_000; conn.readTimeout = 15_000
+        conn.setRequestProperty("User-Agent", "ShieldApp-BreachMonitor"); conn.connectTimeout = 15_000; conn.readTimeout = 15_000
         val json = conn.inputStream.bufferedReader().use { it.readText() }; conn.disconnect()
         val arr = JSONArray(json)
         (0 until arr.length()).map { i ->
@@ -462,7 +462,7 @@ private fun checkPassword(password: String): Int {
     return try {
         val sha1 = MessageDigest.getInstance("SHA-1").digest(password.toByteArray()).joinToString("") { "%02X".format(it) }
         val conn = URL("https://api.pwnedpasswords.com/range/${sha1.take(5)}").openConnection() as HttpURLConnection
-        conn.setRequestProperty("User-Agent", "Cyble"); conn.connectTimeout = 10_000; conn.readTimeout = 10_000
+        conn.setRequestProperty("User-Agent", "ShieldApp"); conn.connectTimeout = 10_000; conn.readTimeout = 10_000
         val response = conn.inputStream.bufferedReader().use { it.readText() }; conn.disconnect()
         response.lines().find { it.startsWith(sha1.drop(5), ignoreCase = true) }?.substringAfter(":")?.trim()?.toIntOrNull() ?: 0
     } catch (_: Exception) { 0 }

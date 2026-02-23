@@ -29,7 +29,7 @@ class OpenPhishFeed @Inject constructor() {
             conn.requestMethod = "GET"
             conn.connectTimeout = CONNECT_TIMEOUT_MS
             conn.readTimeout = READ_TIMEOUT_MS
-            conn.setRequestProperty("User-Agent", "Cyble/1.0 OpenPhish-Integration")
+            conn.setRequestProperty("User-Agent", "ShieldApp/1.0 OpenPhish-Integration")
 
             if (conn.responseCode != 200) {
                 return@withContext Result.failure(Exception("OpenPhish returned ${conn.responseCode}"))

@@ -134,7 +134,7 @@ class VaultViewModel @Inject constructor(
                 val shareIntent = Intent(Intent.ACTION_SEND).apply {
                     type = "application/json"
                     putExtra(Intent.EXTRA_STREAM, uri)
-                    putExtra(Intent.EXTRA_SUBJECT, "Cyble - Vault Export")
+                    putExtra(Intent.EXTRA_SUBJECT, "ShieldApp - Vault Export")
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }

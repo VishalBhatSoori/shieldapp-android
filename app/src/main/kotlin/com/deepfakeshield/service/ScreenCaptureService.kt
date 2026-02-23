@@ -165,7 +165,7 @@ class ScreenCaptureService : Service() {
 
         imageReader = ImageReader.newInstance(captureWidth, captureHeight, PixelFormat.RGBA_8888, 2)
         virtualDisplay = mediaProjection?.createVirtualDisplay(
-            "Cyble_ScreenCapture",
+            "ShieldApp_ScreenCapture",
             captureWidth, captureHeight, density,
             DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
             imageReader?.surface, null, null
@@ -515,7 +515,7 @@ class ScreenCaptureService : Service() {
         val stopIntent = Intent(this, ScreenCaptureService::class.java).apply { action = ACTION_STOP }
         val stopPi = PendingIntent.getService(this, 0, stopIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("Cyble \u2014 Live Monitoring")
+            .setContentTitle("ShieldApp \u2014 Live Monitoring")
             .setContentText(status)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setOngoing(true)

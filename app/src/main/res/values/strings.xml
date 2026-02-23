@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Name -->
-    <string name="app_name">Cyble</string>
+    <string name="app_name">ShieldApp</string>
     
     <!-- General -->
     <string name="ok">OK</string>
@@ -27,7 +27,7 @@
     <string name="setup_incomplete">Setup Incomplete</string>
     
     <!-- Onboarding -->
-    <string name="welcome_title">Welcome to Cyble</string>
+    <string name="welcome_title">Welcome to ShieldApp</string>
     <string name="welcome_subtitle">Your personal safety companion for the digital world</string>
     <string name="onboarding_promise">We help you spot deepfakes, scams, and suspicious calls.</string>
     <string name="try_demo">Try Demo Mode</string>
@@ -152,8 +152,8 @@
     <string name="permission_overlay_why">To show instant warnings over suspicious content</string>
     
     <!-- Service Names -->
-    <string name="notification_listener_service_name">Cyble Notification Scanner</string>
-    <string name="accessibility_service_description">Cyble can scan message notifications for scams when the notification service cannot access message content. Enable in Accessibility settings for full message protection.</string>
+    <string name="notification_listener_service_name">ShieldApp Notification Scanner</string>
+    <string name="accessibility_service_description">ShieldApp can scan message notifications for scams when the notification service cannot access message content. Enable in Accessibility settings for full message protection.</string>
     <string name="service_protection_active">Protection Active</string>
     <string name="service_scanning">Scanning for threats…</string>
     
@@ -177,7 +177,7 @@
     <string name="success_deleted">Deleted successfully</string>
     
     <!-- Widget -->
-    <string name="widget_description">Cyble protection status and quick scan</string>
+    <string name="widget_description">ShieldApp protection status and quick scan</string>
     
     <!-- Managed Configuration (Enterprise / EMM) -->
     <string name="restriction_master_protection_title">Master Protection</string>

@@ -94,7 +94,7 @@ class DeepfakeAccessibilityService : AccessibilityService() {
     override fun onInterrupt() {}
 
     override fun onServiceConnected() {
-        Log.d(TAG, "Cyble Accessibility Service connected")
+        Log.d(TAG, "ShieldApp Accessibility Service connected")
     }
 
     override fun onDestroy() {

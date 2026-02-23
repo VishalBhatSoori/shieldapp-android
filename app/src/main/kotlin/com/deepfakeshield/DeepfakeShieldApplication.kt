@@ -38,26 +38,26 @@ class DeepfakeShieldApplication : Application(), Configuration.Provider {
                 FirebaseApp.initializeApp(this)
                 try {
                     FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(false)
-                } catch (e: Exception) { android.util.Log.w("Cyble", "Init error: ${e.message}") }
+                } catch (e: Exception) { android.util.Log.w("ShieldApp", "Init error: ${e.message}") }
                 try {
                     FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(false)
-                } catch (e: Exception) { android.util.Log.w("Cyble", "Init error: ${e.message}") }
+                } catch (e: Exception) { android.util.Log.w("ShieldApp", "Init error: ${e.message}") }
                 appScope.launch {
                     try {
                         val crash = userPreferences.crashlyticsEnabled.first()
                         val analytics = userPreferences.analyticsEnabled.first()
                         FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(crash)
                         FirebaseAnalytics.getInstance(this@DeepfakeShieldApplication).setAnalyticsCollectionEnabled(analytics)
-                    } catch (e: Exception) { android.util.Log.w("Cyble", "Init error: ${e.message}") }
+                    } catch (e: Exception) { android.util.Log.w("ShieldApp", "Init error: ${e.message}") }
                 }
             } catch (e: Exception) {
-                android.util.Log.w("Cyble", "Firebase not configured: ${e.message}")
+                android.util.Log.w("ShieldApp", "Firebase not configured: ${e.message}")
             }
 
             createNotificationChannels()
             scheduleWorkers()
         } catch (t: Throwable) {
-            android.util.Log.e("Cyble", "Application onCreate error", t)
+            android.util.Log.e("ShieldApp", "Application onCreate error", t)
             // Don't rethrow - allow app to open
         }
     }
@@ -78,13 +78,13 @@ class DeepfakeShieldApplication : Application(), Configuration.Provider {
                         val exitCountry = userPreferences.torExitCountry.first()
                         com.deepfakeshield.service.EmbeddedTorManager.start(this@DeepfakeShieldApplication, exitCountry)
                     }
-                } catch (e: Exception) { android.util.Log.w("Cyble", "Init error: ${e.message}") }
+                } catch (e: Exception) { android.util.Log.w("ShieldApp", "Init error: ${e.message}") }
             }
             com.deepfakeshield.worker.ThreatDatabaseUpdateWorker.schedule(this)
             com.deepfakeshield.worker.ThreatDatabaseUpdateWorker.scheduleImmediateIfNeeded(this)
             com.deepfakeshield.worker.UrlThreatCacheRefreshWorker.schedule(this)
         } catch (e: Exception) {
-            android.util.Log.w("Cyble", "Failed to schedule workers: ${e.message}")
+            android.util.Log.w("ShieldApp", "Failed to schedule workers: ${e.message}")
         }
     }
 
@@ -149,11 +149,11 @@ class DeepfakeShieldApplication : Application(), Configuration.Provider {
         val defaultHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             try {
-                android.util.Log.e("Cyble", "Uncaught exception: ${throwable.message}", throwable)
+                android.util.Log.e("ShieldApp", "Uncaught exception: ${throwable.message}", throwable)
                 try {
                     FirebaseCrashlytics.getInstance().log("Uncaught: ${throwable.javaClass.simpleName}: ${throwable.message}")
                     FirebaseCrashlytics.getInstance().recordException(throwable)
-                } catch (e: Exception) { android.util.Log.w("Cyble", "Crashlytics not available in crash handler: ${e.message}") }
+                } catch (e: Exception) { android.util.Log.w("ShieldApp", "Crashlytics not available in crash handler: ${e.message}") }
             } finally {
                 defaultHandler?.uncaughtException(thread, throwable)
             }

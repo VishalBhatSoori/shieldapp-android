@@ -510,7 +510,7 @@ private fun checkPasswordBreach(password: String): Int {
         val c = URL("https://api.pwnedpasswords.com/range/$prefix").openConnection(com.deepfakeshield.core.network.TorNetworkModule.getProxy()) as HttpURLConnection
         conn = c
         c.connectTimeout = 8000; c.readTimeout = 8000
-        c.setRequestProperty("User-Agent", "Cyble-PasswordChecker")
+        c.setRequestProperty("User-Agent", "ShieldApp-PasswordChecker")
         c.setRequestProperty("Add-Padding", "true")
         c.inputStream.bufferedReader().useLines { lines ->
             lines.filter { it.startsWith(suffix, ignoreCase = true) }

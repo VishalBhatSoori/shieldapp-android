@@ -42,7 +42,7 @@ class UrlHausFeed @Inject constructor() {
             conn.requestMethod = "GET"
             conn.connectTimeout = CONNECT_TIMEOUT_MS
             conn.readTimeout = READ_TIMEOUT_MS
-            conn.setRequestProperty("User-Agent", "Cyble/1.0 URLhaus-Integration")
+            conn.setRequestProperty("User-Agent", "ShieldApp/1.0 URLhaus-Integration")
 
             if (conn.responseCode != 200) {
                 return@withContext Result.failure(Exception("URLhaus returned ${conn.responseCode}"))

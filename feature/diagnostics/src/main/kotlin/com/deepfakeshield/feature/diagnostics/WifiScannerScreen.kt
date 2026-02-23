@@ -1104,7 +1104,7 @@ private fun measureDownloadSpeed(onProgress: (Float) -> Unit): Float {
             conn = URL(url).openConnection() as HttpURLConnection
             conn.connectTimeout = 8000
             conn.readTimeout = 15000
-            conn.setRequestProperty("User-Agent", "Cyble-SpeedTest")
+            conn.setRequestProperty("User-Agent", "ShieldApp-SpeedTest")
 
             val startTime = System.nanoTime()
             var totalBytes = 0L

@@ -79,7 +79,7 @@ object TorNetworkModule {
     fun openConnection(urlString: String): HttpURLConnection {
         val url = URL(urlString)
         val conn = url.openConnection(getProxy()) as HttpURLConnection
-        conn.setRequestProperty("User-Agent", "Cyble/3.0")
+        conn.setRequestProperty("User-Agent", "ShieldApp/3.0")
         if (isConnected) {
             conn.connectTimeout = 30_000; conn.readTimeout = 60_000
             conn.setRequestProperty("DNT", "1"); conn.setRequestProperty("Sec-GPC", "1")

@@ -44,7 +44,7 @@ class CertificateTransparencyFeed @Inject constructor() {
             conn.requestMethod = "GET"
             conn.connectTimeout = CONNECT_TIMEOUT_MS
             conn.readTimeout = READ_TIMEOUT_MS
-            conn.setRequestProperty("User-Agent", "Cyble/1.0")
+            conn.setRequestProperty("User-Agent", "ShieldApp/1.0")
             conn.instanceFollowRedirects = true
 
             if (conn.responseCode != 200) {

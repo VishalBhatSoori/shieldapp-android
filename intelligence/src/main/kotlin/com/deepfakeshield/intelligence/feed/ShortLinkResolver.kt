@@ -50,7 +50,7 @@ class ShortLinkResolver @Inject constructor() {
                     conn.instanceFollowRedirects = false
                     conn.connectTimeout = CONNECT_TIMEOUT_MS
                     conn.readTimeout = READ_TIMEOUT_MS
-                    conn.setRequestProperty("User-Agent", "Cyble/1.0 ShortLinkResolver")
+                    conn.setRequestProperty("User-Agent", "ShieldApp/1.0 ShortLinkResolver")
 
                     val code = conn.responseCode
                     val location = conn.getHeaderField("Location")

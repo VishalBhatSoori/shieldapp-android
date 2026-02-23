@@ -548,7 +548,7 @@ private fun StatChipDw(value: String, label: String, color: Color, modifier: Mod
 private fun fetchBreachDatabase(): List<BreachInfo> {
     return try {
         val conn = URL("https://haveibeenpwned.com/api/v3/breaches").openConnection() as HttpURLConnection
-        conn.setRequestProperty("User-Agent", "Cyble-DarkWebMonitor")
+        conn.setRequestProperty("User-Agent", "ShieldApp-DarkWebMonitor")
         conn.connectTimeout = 15_000; conn.readTimeout = 15_000
         val json = conn.inputStream.bufferedReader().use { it.readText() }
         conn.disconnect()
@@ -578,7 +578,7 @@ private fun checkPasswordHibp(password: String): PasswordCheckResult {
         val prefix = sha1.take(5)
         val suffix = sha1.drop(5)
         val conn = URL("https://api.pwnedpasswords.com/range/$prefix").openConnection() as HttpURLConnection
-        conn.setRequestProperty("User-Agent", "Cyble")
+        conn.setRequestProperty("User-Agent", "ShieldApp")
         conn.connectTimeout = 10_000; conn.readTimeout = 10_000
         val response = conn.inputStream.bufferedReader().use { it.readText() }
         conn.disconnect()

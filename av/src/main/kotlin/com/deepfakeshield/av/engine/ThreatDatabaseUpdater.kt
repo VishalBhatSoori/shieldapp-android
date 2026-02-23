@@ -325,7 +325,7 @@ class ThreatDatabaseUpdater @Inject constructor(
             conn.connectTimeout = 15_000
             conn.readTimeout = 30_000
             conn.requestMethod = "GET"
-            conn.setRequestProperty("User-Agent", "Cyble/1.0")
+            conn.setRequestProperty("User-Agent", "ShieldApp/1.0")
             if (conn.responseCode == 200) readResponse(conn) else null
         } catch (e: Exception) {
             Log.w(TAG, "GET $urlString failed: ${e.message}")
@@ -343,7 +343,7 @@ class ThreatDatabaseUpdater @Inject constructor(
             conn.connectTimeout = 15_000
             conn.readTimeout = 30_000
             conn.requestMethod = "POST"
-            conn.setRequestProperty("User-Agent", "Cyble/1.0")
+            conn.setRequestProperty("User-Agent", "ShieldApp/1.0")
             conn.setRequestProperty("Content-Type", "application/json")
             conn.doOutput = true
             if (body.isNotEmpty()) {

@@ -72,7 +72,7 @@ class TorVpnService : VpnService() {
         val socksPort = TorNetworkModule.proxyPort
 
         try {
-            val b = Builder().setSession("Cyble Tor").setMtu(MTU)
+            val b = Builder().setSession("ShieldApp Tor").setMtu(MTU)
                 .addAddress("10.10.10.2", 32)
                 .addRoute("0.0.0.0", 0)
                 .addDnsServer("10.10.10.1")

@@ -243,7 +243,7 @@ private fun fetchRss(feed: RssFeed): List<NewsArticle> {
     try {
         val conn = URL(feed.url).openConnection() as HttpURLConnection
         conn.connectTimeout = 10_000; conn.readTimeout = 10_000
-        conn.setRequestProperty("User-Agent", "Cyble/3.0")
+        conn.setRequestProperty("User-Agent", "ShieldApp/3.0")
         val xml = conn.inputStream.bufferedReader().use { it.readText() }
         conn.disconnect()
 

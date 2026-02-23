@@ -661,7 +661,7 @@ class FloatingBubbleService : Service() {
                 isAlert -> "Threat Detected"
                 isMonitoringScreen -> "Live Monitoring"
                 totalThreats > 0 -> "$totalThreats Threat${if (totalThreats == 1) "" else "s"} Blocked"
-                isActive -> "Cyble Active"
+                isActive -> "ShieldApp Active"
                 else -> "Protection Paused"
             }
             setTextColor(Color.WHITE); textSize = 15f; setTypeface(null, Typeface.BOLD)

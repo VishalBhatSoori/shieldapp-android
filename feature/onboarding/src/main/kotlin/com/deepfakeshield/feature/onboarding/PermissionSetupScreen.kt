@@ -195,7 +195,7 @@ fun PermissionSetupScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Cyble needs a few permissions to protect you. Grant them below to enable full protection.",
+                    text = "ShieldApp needs a few permissions to protect you. Grant them below to enable full protection.",
                     fontSize = 15.sp,
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
