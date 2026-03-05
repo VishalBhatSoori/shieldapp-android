@@ -78,7 +78,7 @@ jobs:
           KEYSTORE_FILE: "../release.keystore"
           KEY_ALIAS: "mock-alias"
           KEY_PASSWORD: "mock-password"
-        run: ./gradlew assembleRelease --no-daemon
+        run: ./gradlew assembleRelease --no-daemon -x uploadCrashlyticsMappingFileRelease
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
