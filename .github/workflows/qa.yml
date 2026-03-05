@@ -5,9 +5,10 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+  workflow_dispatch:
 
 jobs:
- # this checks the code quality very quickly
+  # this checks the code quality very quickly
   detekt:
     runs-on: ubuntu-latest
     steps:
@@ -38,20 +39,46 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Inject Google Services Secret
-        run: echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
+      - name: Inject Mock Google Services JSON
+        run: |
+          echo '{
+            "project_info": {
+              "project_number": "1",
+              "project_id": "mock-project-id",
+              "storage_bucket": "mock-project-id.appspot.com"
+            },
+            "client": [
+              {
+                "client_info": {
+                  "mobilesdk_app_id": "1",
+                  "android_client_info": {
+                    "package_name": "com.deepfakeshield"
+                  }
+                },
+                "api_key": [
+                  {
+                    "current_key": "mock-api-key"
+                  }
+                ]
+              }
+            ]
+          }' > app/google-services.json
         
+      - name: Generate Dummy Keystore
+        run: |
+          keytool -genkey -v -keystore release.keystore -alias mock-alias -keyalg RSA -keysize 2048 -validity 10000 -storepass mock-password -keypass mock-password -dname "CN=Mock, OU=Mock, O=Mock, L=Mock, S=Mock, C=Mock"
+
       - name: Run Unit Tests
-        run: ./gradlew testReleaseUnitTest --no-daemon
+        run: ./gradlew testReleaseUnitTest --info
 
       - name: Build Release APK
         env:
           RELEASE_BUILD: "1"
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEYSTORE_FILE: ${{ secrets.KEYSTORE_FILE }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew assembleRelease --no-daemon
+          KEYSTORE_PASSWORD: "mock-password"
+          KEYSTORE_FILE: "../release.keystore"
+          KEY_ALIAS: "mock-alias"
+          KEY_PASSWORD: "mock-password"
+        run: ./gradlew assembleRelease --no-daemon -x uploadCrashlyticsMappingFileRelease
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
