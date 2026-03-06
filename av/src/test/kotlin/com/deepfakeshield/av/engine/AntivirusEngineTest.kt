@@ -109,5 +109,3 @@ class AntivirusEngineTest {
         assertTrue(risk.recommendedActions.any { it.type.name.contains("QUARANTINE") })
     }
 }
-
-
